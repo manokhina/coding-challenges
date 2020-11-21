@@ -14,6 +14,17 @@ class TreeNode:
         self.left = left
         self.right = right
 
+    def __eq__(self, other):
+        return self.isSameTree(self, other)
+
+    def isSameTree(self, p, q) -> bool:
+        if not p and not q:
+            return True
+        if p and q and p.val == q.val and self.isSameTree(p.left, q.left) \
+                and self.isSameTree(p.right, q.right):  # both nodes exists, so check their subtrees!
+            return True
+        return False
+
 
 class Solution:
     def mergeTrees(self, t1: TreeNode, t2: TreeNode) -> TreeNode:
@@ -28,9 +39,3 @@ class Solution:
 
         return new_tree
 
-
-if __name__ == '__main__':
-    solution = Solution()
-    t1 = TreeNode(val=0)
-    t2 = TreeNode(val=5)
-    print(solution.mergeTrees(t1, t2))
