@@ -18,6 +18,10 @@ class DumbSolution:
                     fl.write(content[row][col] + ' ')
                 fl.write("\n")
 
+#
+# class BetterSolution:
+#     pass
+
 
 if __name__ == '__main__':
     solution = Solution()
@@ -25,3 +29,6 @@ if __name__ == '__main__':
 
     solution2 = DumbSolution()
     print(solution2.transpose_file("filename.txt"))
+
+    # solution3 = BetterSolution()
+    # print(solution3.transpose_file("filename.txt"))
