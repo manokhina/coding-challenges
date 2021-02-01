@@ -30,6 +30,23 @@ def extraLongFactorials(n):
     return ''.join(reversed([str(i) for i in d]))
 
 
+def extraLongFactorials2(n):
+    n = int(n)
+    d = [1]
+    for i in range(2, n + 1):
+        for j in range(len(d)):
+            d[j] *= i
+        for j in reversed(range(len(d))):
+            if d[j] < 10:
+                continue
+            if j == len(d) - 1:
+                d.insert(0, 0)
+            d[j + 1] %= 10
+            d[j] += d[j] // 10
+    print(''.join([str(i) for i in d]))
+    return ''.join([str(i) for i in d])
+
+
 if __name__ == '__main__':
     inputs_path = "extra-long-factorials-testcases/input"
     outputs_path = "extra-long-factorials-testcases/output"
@@ -38,7 +55,7 @@ if __name__ == '__main__':
     for inpt, outpt in zip(inputs, outputs):
         inpt = open(os.path.join(inputs_path, inpt)).read()
         outpt = open(os.path.join(outputs_path, outpt)).read()
-        assert extraLongFactorials(inpt) == outpt
+        assert extraLongFactorials2(inpt) == outpt
 
 
 
